@@ -1,0 +1,1 @@
+DOMAIN = 'mortgage_tracker'

@@ -1,0 +1,7 @@
+{
+  "name": "Mortgage Tracker",
+  "domain": "mortgage_tracker",
+  "country": "US",
+  "homeassistant": "2024.6.0",
+  "render_readme": true
+}

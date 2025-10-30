@@ -1,0 +1,13 @@
+{
+  "domain": "mortgage_tracker",
+  "name": "Mortgage Tracker",
+  "version": "1.0.1",
+  "documentation": "https://github.com/yourusername/mortgage-tracker",
+  "issue_tracker": "https://github.com/yourusername/mortgage-tracker/issues",
+  "codeowners": [
+    "@yourusername"
+  ],
+  "integration_type": "hub",
+  "iot_class": "calculated",
+  "requirements": []
+}
