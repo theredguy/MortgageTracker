@@ -1,11 +1,11 @@
+
 {
   "domain": "mortgage_tracker",
   "name": "Mortgage Tracker",
-  "version": "1.3.0",
-  "documentation": "https://github.com/theredguy/mortgage_tracker",
+  "version": "1.4.0",
+  "documentation": "https://github.com/yourusername/mortgage-tracker",
   "requirements": [],
-  "codeowners": ["@theredguy"],
-  "iot_class": "local_polling",
+  "dependencies": [],
+  "codeowners": ["@yourusername"],
   "config_flow": true
 }
-

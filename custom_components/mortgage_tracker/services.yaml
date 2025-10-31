@@ -1,34 +1,14 @@
-make_extra_payment:
-  name: Make Extra Payment
-  description: Add an extra payment to reduce mortgage balance
+
+add_additional_payment:
+  description: "Add an extra payment to the mortgage"
   fields:
     amount:
-      required: true
+      description: "Payment amount in GBP"
       example: 500
-      selector:
-        number:
-          min: 0
 
-change_interest_rate:
-  name: Change Interest Rate
-  description: Update the annual interest rate
+set_interest_rate:
+  description: "Change the mortgage interest rate"
   fields:
-    new_rate:
-      required: true
-      example: 4.5
-      selector:
-        number:
-          min: 0
-          max: 20
-          step: 0.1
-
-set_outstanding_balance:
-  name: Set Outstanding Balance
-  description: Manually set remaining balance
-  fields:
-    new_balance:
-      required: true
-      example: 200000
-      selector:
-        number:
-          min: 0
+    rate:
+      description: "New interest rate in %"
+      example: 3.5

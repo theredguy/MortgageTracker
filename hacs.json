@@ -1,7 +1,9 @@
+
 {
   "name": "Mortgage Tracker",
-  "domain": "mortgage_tracker",
-  "country": "US",
-  "homeassistant": "2024.6.0",
-  "render_readme": true
+  "content_in_root": false,
+  "domains": ["integration", "lovelace"],
+  "homeassistant": "2023.1.0",
+  "hacs": "1.0.0",
+  "zip_release": false
 }
