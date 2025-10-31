@@ -1,50 +1,39 @@
-
 from homeassistant.helpers.entity import Entity
 from .const import DOMAIN
 
 async def async_setup_entry(hass, entry, async_add_entities):
-    async_add_entities([MortgageSensor(hass)])
+    """Set up the mortgage tracker sensor."""
+    sensor = MortgageSensor(hass)
+    async_add_entities([sensor])
+    hass.data[DOMAIN]["sensor"] = sensor  # store for service access
 
 class MortgageSensor(Entity):
     def __init__(self, hass):
         self.hass = hass
-        self._state = None
-        self._attr_extra_state_attributes = {
-            "remaining_payments": 0,
-            "end_date": None,
-            "balance": 0,
-            "interest_rate": 0
-        }
-        self.balance = 200000
+        self.balance = 200000.0
         self.interest_rate = 3.5
-        self.monthly_payment = 1000
         self.remaining_payments = 240
-
-    @property
-    def name(self):
-        return "Mortgage Tracker"
+        self._attr_name = "Mortgage Tracker"
 
     @property
     def state(self):
-        return self._state
+        return round(self.balance, 2)
 
     @property
     def extra_state_attributes(self):
-        return self._attr_extra_state_attributes
-
-    async def async_update(self):
-        self._state = round(self.balance, 2)
-        self._attr_extra_state_attributes.update({
+        return {
             "remaining_payments": self.remaining_payments,
             "end_date": "2045-10-31",
-            "interest_rate": self.interest_rate
-        })
+            "interest_rate": self.interest_rate,
+        }
 
     async def add_payment(self, amount):
-        self.balance -= amount
+        """Reduce balance and recalculate remaining payments."""
+        self.balance = max(0, self.balance - float(amount))
         self.remaining_payments = max(0, self.remaining_payments - 1)
-        await self.async_update()
+        self.async_write_ha_state()
 
     async def set_interest_rate(self, rate):
-        self.interest_rate = rate
-        await self.async_update()
+        """Set new interest rate."""
+        self.interest_rate = float(rate)
+        self.async_write_ha_state()
