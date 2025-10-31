@@ -1,10 +1,16 @@
 
 add_additional_payment:
-  description: "Add an extra payment to the mortgage"
+  description: Add extra payment to mortgage
   fields:
     amount:
-      description: "Payment amount in GBP"
+      description: Amount in GBP
       example: 500
+      required: true
+    date:
+      description: Date of payment (YYYY-MM-DD)
+      example: "2025-07-01"
+      required: false
+
 
 set_interest_rate:
   description: "Change the mortgage interest rate"
