@@ -2,6 +2,12 @@ from datetime import datetime, timedelta
 from homeassistant.helpers.entity import Entity
 from .const import DOMAIN
 
+async def async_setup_entry(hass, entry, async_add_devices):
+    """Set up the mortgage sensor from a config entry."""
+    sensor = MortgageSensor(hass)
+    async_add_devices([sensor])
+    return True
+    
 class MortgageSensor(Entity):
     def __init__(self, hass, balance=200000, term_months=240, interest_rate=3.5,
                  regular_payment=1000, payment_day=1):
